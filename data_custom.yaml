@@ -5,4 +5,4 @@ val: # path to test folder
 nc: 4 
 
 # change this according to the classes.txt
-names: ["basketball", "spain_player", "usa_player", "referee"]
+names: ["basketball","usa_player", "spain_player", "referee"]
