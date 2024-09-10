@@ -1,5 +1,5 @@
-train: # path to train folder
-val: # path to test folder
+train: D:/wongq/downloads/yolov8OD/train
+val: D:/wongq/downloads/yolov8OD/test
 
 # change this to number of classes (labels)
 nc: 4 

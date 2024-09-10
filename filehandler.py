@@ -33,7 +33,10 @@ clear_directory(test_label_dir)
 # Move classes.txt one directory up
 classes_file = os.path.join(img_dir, 'classes.txt')
 if os.path.exists(classes_file):
+    # Set the destination to move the file one directory up
     destination_path = os.path.join(os.getcwd(), '..', 'classes.txt')
+    
+    # Move the file
     shutil.move(classes_file, destination_path)
     print(f"Moved classes.txt to {destination_path}")
 else:
@@ -42,17 +45,18 @@ else:
 # Function to copy files to destination (images and labels)
 def copy_files(file_list, img_dest_dir, label_dest_dir):
     for jpg, txt in file_list:
-        shutil.copy(jpg, img_dest_dir)
-        shutil.copy(txt, label_dest_dir)
+        if jpg.endswith(('.png', '.jpg', '.jpeg')):
+            shutil.copy(jpg, img_dest_dir)  # Copy only image files to the images folder
+        shutil.copy(txt, label_dest_dir)  # Copy only .txt files to the labels folder
 
 # List to store file pairs
 file_pairs = []
 
 # Traverse through the files in the img_dir
 for file in os.listdir(img_dir):
-    if file.endswith('.jpg'):
+    if file.endswith(('.png', '.jpg', '.jpeg')):  # Handle image files with valid extensions
         jpg_file = os.path.join(img_dir, file)
-        txt_file = os.path.join(img_dir, file.replace('.jpg', '.txt'))
+        txt_file = os.path.join(img_dir, file.rsplit('.', 1)[0] + '.txt')  # Look for the corresponding .txt file
         if os.path.exists(txt_file):
             file_pairs.append((jpg_file, txt_file))
 
@@ -74,3 +78,4 @@ copy_files(test_files, test_img_dir, test_label_dir)
 total_items = len(file_pairs)
 print(f"Total number of items in {img_dir}: {total_items}")
 print(f"{len(train_files)} items copied to train (images and labels), {len(test_files)} items copied to test (images and labels)")
+

@@ -88,7 +88,7 @@ For this example I will be running it on a Windows laptop
 
     Run this command:
     ```
-    yolo task=detect mode=train epoch=100 data=data_custom.yaml model=yolov8m.pt imgsz=640 batch=8
+    yolo task=detect mode=train epochs=100 data=data_custom.yaml model=yolov8m.pt imgsz=640 batch=8
     ```
 
 
