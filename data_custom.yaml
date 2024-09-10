@@ -1,0 +1,8 @@
+train: # path to train folder
+val: # path to test folder
+
+# change this to number of classes (labels)
+nc: 4 
+
+# change this according to the classes.txt
+names: ["basketball", "spain_player", "usa_player", "referee"]
